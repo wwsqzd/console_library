@@ -1,0 +1,14 @@
+D:\Projekts_main\vs_prj\Library_pet\bin\Debug\net8.0\Library_pet.exe
+D:\Projekts_main\vs_prj\Library_pet\bin\Debug\net8.0\Library_pet.deps.json
+D:\Projekts_main\vs_prj\Library_pet\bin\Debug\net8.0\Library_pet.runtimeconfig.json
+D:\Projekts_main\vs_prj\Library_pet\bin\Debug\net8.0\Library_pet.dll
+D:\Projekts_main\vs_prj\Library_pet\bin\Debug\net8.0\Library_pet.pdb
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.AssemblyInfoInputs.cache
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.AssemblyInfo.cs
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.csproj.CoreCompileInputs.cache
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.dll
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\refint\Library_pet.dll
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.pdb
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.genruntimeconfig.cache
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\ref\Library_pet.dll
