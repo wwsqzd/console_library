@@ -1,13 +1,18 @@
 ﻿using System.Data.Common;
 
 
-Library mainLib = new Library(new Book[0]);
+Library mainLib = new Library(new [] {new Book(2, "Tree of Smoke", "Denis Johnson", 2007), new Book(1, "How to Be Both", "Ali Smith", 2014)});
 
-void Commands() {
-    System.Console.WriteLine("---> Введите 1 чтоб вывести массив");
-    System.Console.WriteLine("---> Введите 2 чтобы добавить книгу в библиотеку");
-    System.Console.WriteLine("---> Введите 3 чтобы удалить книгу из библиотеки");
-    System.Console.WriteLine("---> Введите 0 чтоб завершить программу");
+
+
+void Commands()
+{
+    System.Console.ForegroundColor = ConsoleColor.Red;
+    System.Console.WriteLine("---> Enter 1 to display the array");
+    System.Console.WriteLine("---> Enter 2 to add a book to the library");
+    System.Console.WriteLine("---> Enter 3 to remove a book from the library");
+    System.Console.WriteLine("---> Enter 0 to terminate the program");
+    System.Console.ResetColor();
 }
 
 while (mainLib.LibraryStatus)
@@ -21,6 +26,7 @@ while (mainLib.LibraryStatus)
     }
     else if (Convert.ToInt32(ant) == 1)
     {
+        Message.Print("Library display");
         mainLib.ShowLibrary();
     }
     else if (Convert.ToInt32(ant) == 2)
@@ -28,7 +34,7 @@ while (mainLib.LibraryStatus)
         int temp_id;
         while (true)
         {
-            System.Console.WriteLine("Ввведите уникальное ID книги:");
+            Message.Print("Enter the unique ID of the book:");
             bool IsIdValid = int.TryParse(System.Console.ReadLine(), out int tp_id);
             if (IsIdValid)
             {
@@ -39,23 +45,23 @@ while (mainLib.LibraryStatus)
                 }
                 else
                 {
-                    System.Console.WriteLine("Такой ID уже существует. Введите другой");
+                    Message.Print("Such an ID already exists. Enter a different one");
                     continue;
                 }
             }
             else
             {
-                System.Console.WriteLine("Введите коректно число!");
+                Message.Print("Enter the correct number!");
                 continue;
             }
         }
 
 
-        System.Console.WriteLine("Ввведите название книги:");
+        Message.Print("Type in the title of the book:");
         string? temp_title = System.Console.ReadLine();
-        System.Console.WriteLine("Ввведите автора книги:");
+        Message.Print("Enter the author of the book:");
         string? temp_autor = System.Console.ReadLine();
-        System.Console.WriteLine("Ввведите год книги:");
+        Message.Print("Enter the year of the book:");
         bool IsYearValid = int.TryParse(System.Console.ReadLine(), out int temp_year);
         if (!string.IsNullOrWhiteSpace(temp_title) && !string.IsNullOrWhiteSpace(temp_autor) && IsYearValid)
         {
@@ -63,12 +69,12 @@ while (mainLib.LibraryStatus)
         }
         else
         {
-            System.Console.WriteLine("Incorrect data entry");
+            Message.Print("Incorrect data entry");
         }
     }
     else if (Convert.ToInt32(ant) == 3)
     {
-        System.Console.WriteLine("Write the book ID");
+        Message.Print("Write the book ID");
         bool IsIdValid = int.TryParse(System.Console.ReadLine(), out int tp_id);
         if (IsIdValid)
         {
@@ -76,7 +82,7 @@ while (mainLib.LibraryStatus)
         }
         else
         {
-            System.Console.WriteLine("Incorrect data entry");   
+            Message.Print("Incorrect data entry");   
         }
         
     }

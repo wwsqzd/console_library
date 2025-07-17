@@ -3,8 +3,8 @@
 public interface ILibrary
 {
     public Book[] books { get; set; }
-    
-    public int LengthOfLibrary { get;}
+
+    public int LengthOfLibrary { get; }
 
     public void SortLibrary();
     public void AddBook(Book book);
@@ -12,6 +12,7 @@ public interface ILibrary
 
     public Book this[int index] { get; set; }
     public void ShowLibrary();
+    public int FindBookById(int book_id);
 }
 
 
@@ -29,9 +30,10 @@ public class Library : ILibrary
     public Library(Book[] books)
     {
         this.books = books;
-        System.Console.WriteLine("Добро пожаловать в библиотеку!");
-        System.Console.WriteLine("Ты можешь смотреть, добавлять и удалять книги из библиотеки.");
-        System.Console.WriteLine("Ввведи 1 чтоб войти");
+        SortLibrary();
+        Message.Print("Welcome to the library!");
+        Message.Print("You can check out, add and remove books from the library.");
+        Message.Print("Enter 1 to enter.");
         bool IsSignValid = int.TryParse(System.Console.ReadLine(), out int antw);
         if (antw == 1)
         {
@@ -40,7 +42,7 @@ public class Library : ILibrary
         }
         else
         {
-            System.Console.WriteLine("Access denied");
+            Message.Print("Access denied");
         }
         
     }
@@ -77,7 +79,7 @@ public class Library : ILibrary
         temp[books.Length] = book;
         books = temp;
         SortLibrary();
-        System.Console.WriteLine("The book has been successfully added to the library");
+        Message.Print("The book has been successfully added to the library");
 
     }
 
@@ -87,7 +89,7 @@ public class Library : ILibrary
 
         if (indx == -1)
         {
-            System.Console.WriteLine("Books was not found!");
+            Message.Print("Books was not found!");
         }
         else
         {
@@ -101,7 +103,7 @@ public class Library : ILibrary
                 temp[i] = books[i];
             }
             books = temp;
-            System.Console.WriteLine("The book was successfully deleted");
+            Message.Print("The book was successfully deleted");
         }
     }
     
@@ -131,13 +133,13 @@ public class Library : ILibrary
 
     public void ShowLibrary()
     {
-        System.Console.WriteLine("=====");
+        Message.Print("=====");
 
         foreach (Book book in books)
         {
             System.Console.WriteLine($"{book.Title} by {book.Autor} in {book.Year}. ID:({book.Id})");
         }
 
-        System.Console.WriteLine("=====");
+        Message.Print("=====");
     }
 }

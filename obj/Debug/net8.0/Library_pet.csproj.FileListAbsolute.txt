@@ -12,3 +12,4 @@ D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\refint\Library_pet.dll
 D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.pdb
 D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.genruntimeconfig.cache
 D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\ref\Library_pet.dll
+D:\Projekts_main\vs_prj\Library_pet\obj\Debug\net8.0\Library_pet.sourcelink.json
