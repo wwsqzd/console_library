@@ -1,7 +1,7 @@
 ﻿using System.Data.Common;
 
 
-Library mainLib = new Library(new [] {new Book(2, "Tree of Smoke", "Denis Johnson", 2007), new Book(1, "How to Be Both", "Ali Smith", 2014)});
+Library mainLib = new Library(new List<Book> {new Book(2, "Tree of Smoke", "Denis Johnson", 2007), new Book(1, "How to Be Both", "Ali Smith", 2014)});
 
 
 
@@ -38,7 +38,8 @@ while (mainLib.LibraryStatus)
             bool IsIdValid = int.TryParse(System.Console.ReadLine(), out int tp_id);
             if (IsIdValid)
             {
-                if (mainLib.FindBookById(tp_id) == -1)
+                Book? ifcont = mainLib.FindBookById(tp_id);
+                if (ifcont == null)
                 {
                     temp_id = tp_id;
                     break;
@@ -65,7 +66,7 @@ while (mainLib.LibraryStatus)
         bool IsYearValid = int.TryParse(System.Console.ReadLine(), out int temp_year);
         if (!string.IsNullOrWhiteSpace(temp_title) && !string.IsNullOrWhiteSpace(temp_autor) && IsYearValid)
         {
-            mainLib.AddBook(new Book(temp_id, temp_title, temp_autor, temp_year));
+            await mainLib.AddBook(new Book(temp_id, temp_title, temp_autor, temp_year));
         }
         else
         {

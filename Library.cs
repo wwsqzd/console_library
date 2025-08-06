@@ -2,32 +2,32 @@
 
 public interface ILibrary
 {
-    public Book[] books { get; set; }
+    public List<Book> books { get; set; }
 
     public int LengthOfLibrary { get; }
 
     public void SortLibrary();
-    public void AddBook(Book book);
+    public Task AddBook(Book book);
     public void DeleteBook(int book_id);
 
     public Book this[int index] { get; set; }
     public void ShowLibrary();
-    public int FindBookById(int book_id);
+    // public int FindBookById(int book_id);
 }
 
 
 
 public class Library : ILibrary
 {
-    public Book[] books { get; set; }
+    public List<Book> books { get; set; }
     public bool LibraryStatus = false;
 
     public int LengthOfLibrary
     {
-        get => books.Length;
+        get => books.Count;
     }
 
-    public Library(Book[] books)
+    public Library(List<Book> books)
     {
         this.books = books;
         SortLibrary();
@@ -55,80 +55,37 @@ public class Library : ILibrary
 
     public void SortLibrary()
     {
-        for (int i = 0; i < books.Length; i++)
-        {
-            for (int j = i + 1; j < books.Length; j++)
-            {
-                if (books[i].CompareTo(books[j]) > 0)
-                {
-                    var temp = books[i];
-                    books[i] = books[j];
-                    books[j] = temp;
-                }
-            }
-        }
+        books.Sort();
     }
 
-    public void AddBook(Book book) // Add book to a Library
+    public async Task AddBook(Book book) // Add book to a Library
     {
-        Book[] temp = new Book[books.Length + 1];
-        for (int i = 0; i < books.Length; i++)
-        {
-            temp[i] = books[i];
-        }
-        temp[books.Length] = book;
-        books = temp;
+        System.Console.WriteLine("Adding a book to your library...");
+        books.Add(book);
         SortLibrary();
+        await Task.Delay(3000);
         Message.Print("The book has been successfully added to the library");
 
     }
 
     public void DeleteBook(int book_id) // Delete book from Library
     {
-        int indx = FindBookById(book_id);
+        Book? bookToRemove = books.FirstOrDefault(b => b.Id == book_id);
 
-        if (indx == -1)
+        if (bookToRemove != null)
         {
-            Message.Print("Books was not found!");
+            books.Remove(bookToRemove);
+            Message.Print("Books was removed!");
         }
         else
         {
-            Book[] temp = new Book[books.Length - 1];
-            for (int i = 0; i < books.Length; i++)
-            {
-                if (i == indx)
-                {
-                    continue;
-                }
-                temp[i] = books[i];
-            }
-            books = temp;
-            Message.Print("The book was successfully deleted");
+            Message.Print("Books was not found!");
         }
     }
     
-    public int FindBookById(int book_id)
+    public Book? FindBookById(int book_id)
         {
-            int left = 0;
-            int right = books.Length - 1;
-            while (left <= right)
-            {
-                int mid = (left + right) / 2;
-
-                if (books[mid].Id == book_id)
-                {
-                    return mid; // books was found
-                }
-                else if (books[mid].Id < book_id)
-                {
-                    left = mid + 1;
-                }
-                else
-                {
-                    right = mid - 1;
-                }
-            }
-            return -1;
+            return books.Find(b => b.Id == book_id);
         }
 
     public void ShowLibrary()
@@ -137,7 +94,7 @@ public class Library : ILibrary
 
         foreach (Book book in books)
         {
-            System.Console.WriteLine($"{book.Title} by {book.Autor} in {book.Year}. ID:({book.Id})");
+            System.Console.WriteLine($"{book.Title} by {book.Author} in {book.Year}. ID:({book.Id})");
         }
 
         Message.Print("=====");

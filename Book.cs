@@ -1,31 +1,21 @@
 
 interface IBook : IComparable, ICloneable
 {
-    public int Id { get; set; }
-    public string Title { get; set; }
-    public string Autor { get; set; }
-    public int Year { get; set; }
+    
 }
 
 
-public class Book : IBook
+public class Book(int Id, string Title, string Author, int Year) : IBook
 {
-    public int Id { get; set; }
-    public string Title { get; set; }
-    public string Autor { get; set; }
-    public int Year { get; set; }
+    public int Id { get; set; } = Id;
+    public string Title { get; set; } = Title;
+    public string Author { get; set; } = Author;
+    public int Year { get; set; } = Year;
 
-    public Book(int id, string title, string autor, int year)
-    {
-        Id = id;
-        Title = title;
-        Autor = autor;
-        Year = year;
-    }
 
     public object Clone()
     {
-        return new Book(Id, Title, Autor, Year);
+        return new Book(Id, Title, Author, Year);
     }
 
     public int CompareTo(object? obj)
